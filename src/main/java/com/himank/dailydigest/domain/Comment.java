@@ -1,12 +1,12 @@
 package com.himank.dailydigest.domain;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "COMMENTS")
 @NoArgsConstructor
 @Getter
 public class Comment {
@@ -17,11 +17,12 @@ public class Comment {
 
     private String reply;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonManagedReference
+    @ManyToOne
     @JoinColumn
     private Post post;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private User user;
 

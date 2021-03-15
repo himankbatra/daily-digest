@@ -1,11 +1,10 @@
 package com.himank.dailydigest.domain;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +32,7 @@ import java.util.List;
                 )
         }
 )
-@Entity
+@Entity(name = "POSTS")
 @NoArgsConstructor
 @Getter
 public class Post {
@@ -42,10 +41,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String subject;
+    @JsonBackReference
     @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
+    private List<Comment> comments=new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn
     private User user;
 

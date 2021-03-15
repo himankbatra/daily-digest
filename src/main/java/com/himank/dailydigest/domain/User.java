@@ -1,6 +1,5 @@
 package com.himank.dailydigest.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -9,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "USERS")
 @NoArgsConstructor
 @Getter
 public class User {
